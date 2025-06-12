@@ -1,116 +1,157 @@
-# KnitSpace: Automated LLM Testing Harness
+You've got a **README.md with a merge conflict** between two branches: one uses `KnitSpace`, the other `Knit_Space_LLM_Ranker`. Since your final PyPI package is called `ks-llm-ranker`, and the actual import is still `knit_space`, it's best to use:
 
-KnitSpace is an automated testing harness for evaluating and comparing Large Language Models (LLMs) across diverse tasks. It helps assess LLM performance in areas like problem-solving, knowledge retrieval, coding, and safety.
+* **Project name**: `KnitSpace LLM Ranker`
+* **Import name**: `knit_space`
+* **Install name**: `ks-llm-ranker`
 
-## Key Features
+I'll now **resolve the merge conflict** and write a clean, final README that integrates the best of both sides:
 
-*   **Multi-LLM Support**: Integrates with providers like OpenAI, Google, Cohere, Mistral, etc.
-*   **Diverse Test Suite**: Includes mathematical reasoning, coding challenges, instruction following, knowledge tests (e.g., MMLU), long-context understanding, text obfuscation, and safety evaluations.
-*   **Elo Rating System**: Uses a sophisticated Elo system considering task difficulty and response "action cost" for nuanced performance assessment.
-*   **Secure Code Execution**: Employs Docker for safe execution of LLM-generated code.
-*   **Text Obfuscation**: Tests reasoning with transformed questions (e.g., character mapping).
-*   **Interactive Review**: Offers a web interface to inspect test results.
-*   **Extensible**: Designed for adding new LLM providers and test types.
+---
 
-## Core Components
+````markdown
+# KnitSpace LLM Ranker: Automated LLM Testing Harness
 
-KnitSpace is organized into several core components:
+KnitSpace is an automated testing harness designed to evaluate and compare the capabilities of various Large Language Models (LLMs) across a diverse set of tasks. It provides a comprehensive framework for researchers and developers to assess LLM performance in areas such as problem-solving, knowledge retrieval, coding proficiency, and safety.
 
-*   **`knit_space/models.py`**: Handles all LLM interactions.
-    *   Defines an abstract base `Model` class for a consistent LLM interface.
-    *   Contains specific provider implementations (e.g., `OpenAIModel`, `GeminiModel`) for API communication.
-    *   Includes `ProviderInterface` and `MultiModelInterface` to manage and use models from different providers.
+## 🔑 Key Features
 
-*   **`knit_space/tests/`**: Contains all test definitions and generation logic.
-    *   `base.py`: Defines core testing structures:
-        *   `QAItem`: A dataclass for a single question-answer item (including question, answer, skill coefficient, modality, verification logic).
-        *   `AbstractQATest`: The base class for all test generators. Specific tests inherit from this and implement `generate()` to yield `QAItem`s.
-        *   `TestRegistry`: Facilitates discovery and organization of test classes.
-    *   Specific test files (e.g., `basic_math_tests.py`, `coding_tests.py`): Implement diverse tests by subclassing `AbstractQATest` and generating `QAItem` instances tailored to different evaluation scenarios.
+- **Multi-LLM Support**: Integrates with OpenAI, Google, Cohere, Mistral, and more.
+- **Diverse Test Suite**: Includes mathematical reasoning, coding tasks, knowledge tests (MMLU), long-context, instruction-following, and obfuscation-based tests.
+- **Elo Rating System**: Scores models using task difficulty and a cognitive cost metric ("S-value") for nuanced benchmarking.
+- **Secure Code Execution**: Uses Docker containers to safely execute LLM-generated Python/JS code.
+- **Text Obfuscation**: Tests reasoning under character-mapped distortions.
+- **Interactive Review**: Launch a web-based viewer for test results.
+- **Extensible**: Easily add new LLM providers and new types of tests.
 
-*   **`knit_space/marker.py`**: Responsible for scoring and evaluating LLM performance.
-    *   Collects results (the `QAItem`, LLM's answer, verification outcome).
-    *   Calculates statistics (attempted, correct, failed).
-    *   Implements an Elo rating system considering `QAItem.skill_coefficient` and an "action trajectory S-value" (a cognitive cost metric derived from a GPT-2 model) for nuanced scoring.
-    *   Launches a Flask-based web server (`launch_review_server()`) for interactive review of detailed test results.
+---
 
-*   **`knit_space/utils/code_executor.py`**: Provides secure execution for LLM-generated code.
-    *   Uses Docker containers to sandbox Python and JavaScript code.
-    *   The `CodeExecutor` class takes LLM code, language, test cases (input/output pairs), and hints (e.g., function names).
-    *   Dynamically prepares runner scripts that execute the LLM's code within Docker, capturing results.
+## 🧱 Core Components
 
-*   **`knit_space/obscurers/`**: Contains tools for text transformation to create challenging tests.
-    *   `char_obfuscator.py`: Provides `CharObfuscator` to replace characters (e.g., English letters with Greek symbols) based on a map. The map is provided to the LLM to test its ability to de-obfuscate.
+### 📁 `knit_space/models.py`
+- Unified interface for all LLM providers.
+- Abstract `Model` class + subclasses like `OpenAIModel`, `GeminiModel`, etc.
+- Manages API initialization, inference calls, and model metadata.
 
-*   **`verify-auto.py`** (in the root directory): The main script to orchestrate test runs.
-    *   Configures the LLM provider and model.
-    *   Selects test classes from `knit_space.tests`.
-    *   Runs tests, collects responses, and uses `Marker` for evaluation and Elo scoring.
-    *   Launches the web review server.
+### 📁 `knit_space/tests/`
+- Contains all test definitions.
+- `base.py` defines:
+  - `QAItem`: A test prompt, answer, and scoring logic.
+  - `AbstractQATest`: Base class for all test sets.
+  - `TestRegistry`: Auto-discovers test modules.
+- Includes test types: math, coding, chess, long-context, MMLU, etc.
 
-## Setup
+### 📁 `knit_space/marker.py`
+- Evaluates model responses.
+- Uses `QAItem` scoring logic and tracks correctness.
+- Implements Elo scoring using both test difficulty and S-value.
+- Launches `Flask` server to review test results interactively.
 
-Follow these steps to set up KnitSpace:
+### 📁 `knit_space/utils/code_executor.py`
+- Runs Python and JS code from models inside Docker safely.
+- Accepts test cases (input/output pairs) for correctness validation.
+
+### 📁 `knit_space/obscurers/`
+- Tools for generating challenging input variants.
+- `CharObfuscator`: Replaces characters using a bijective map to test reasoning under noise.
+
+### 🐍 `verify-auto.py`
+- Main script to run tests.
+- Configures model, loads test classes, and executes tests.
+- Starts web server for results review.
+
+---
+
+## ⚙️ Setup
 
 ### 1. Prerequisites
 
-*   **Python**: Python 3.8+ recommended.
-*   **Docker**: Required for coding tests using `CodeExecutor`. Ensure Docker daemon is running.
-*   **Git**: For cloning the repository.
+- Python 3.8+
+- Docker (for coding tasks)
+- Git
 
 ### 2. Installation
 
-1.  **Clone**: `git clone <repository_url> && cd knitspace`
-2.  **Virtual Environment** (recommended):
-    ```bash
-    python -m venv venv
-    source venv/bin/activate  # Windows: venv\Scriptsctivate
-    ```
-3.  **Install Dependencies**:
-    ```bash
-    pip install requests numpy torch transformers Flask Pillow
-    ```
-    Install Python SDKs for desired LLM providers (e.g., `pip install google-generativeai openai`). *A `requirements.txt` will be added later.*
+```bash
+git clone <repository_url>
+cd KnitSpace-LLM-Ranker
 
-### 3. Configuration
+python -m venv venv
+source venv/bin/activate  # (Windows: venv\Scripts\activate)
 
-*   **API Keys**: Set environment variables for LLM providers (e.g., `OPENAI_API_KEY`, `GEMINI_API_KEY`).
-*   **Cloudflare**: If using Cloudflare, also set `CLOUDFLARE_ACCOUNT_ID`.
-*   **Docker**: Ensure Docker is running and accessible.
+pip install -r requirements.txt  # Or manually install dependencies
+````
 
-## Running Tests
+### 3. API Key Setup
 
-The primary script for evaluations is `verify-auto.py`.
+Set the following environment variables based on the providers you wish to use:
 
-### Using `verify-auto.py`
+```bash
+export OPENAI_API_KEY="..."
+export GEMINI_API_KEY="..."
+export MISTRAL_API_KEY="..."
+export COHERE_API_KEY="..."
+# Cloudflare-specific
+export CLOUDFLARE_API_KEY="..."
+export CLOUDFLARE_ACCOUNT_ID="..."
+```
 
-1.  **Ensure Setup is Complete**: Dependencies installed and API keys set.
-2.  **Configure `verify-auto.py`**:
-    *   **LLM Provider & Model**: Modify `models.get_provider(...)` and the `model_name` in `inference()` calls.
-    *   **Test Cases**: Edit the `test_cases` list to include desired test classes from `knit_space.tests`.
-3.  **Run**: `python verify-auto.py`
-4.  **View Results**:
-    *   Console logs progress and final Elo score.
-    *   A Flask web server (usually `http://localhost:8000`) launches for detailed review.
+---
 
-*(Note: `time.sleep(10)` in `verify-auto.py` is for API rate limits; adjust as needed.)*
+## 🚀 Running Tests
 
-### Inspecting Test Data with `QA-test.py`
+### Run via `verify-auto.py`
 
-To view test questions/answers without running LLMs:
-1.  Configure `QA-test.py` by editing its `test` list.
-2.  Run: `python QA-test.py`
+1. Configure:
 
-## Extending the Harness
+   * Choose model/provider in `verify-auto.py`
+   * Select tests in `test_cases` list
+2. Run:
 
-KnitSpace is designed for extension:
+   ```bash
+   python verify-auto.py
+   ```
+3. View:
 
-*   **Adding New LLM Providers**:
-    1.  Create a new class in `knit_space/models.py` inheriting from `knit_space.models.Model`.
-    2.  Implement abstract methods for client initialization and inference.
-    3.  Update `PROVIDER_CLASS_MAP` and `KNOWN_MODELS_INFO` in `knit_space/models.py`.
+   * Console logs test stats
+   * Web UI opens at `http://localhost:8000`
 
-*   **Adding New Tests**:
-    1.  Create a new test class in `knit_space/tests/` inheriting from `knit_space.tests.base.AbstractQATest`.
-    2.  Implement the `generate()` method to yield `QAItem` instances.
-    3.  Optionally use `@register_test()` decorator.
+### Debug Test Inputs (optional)
+
+Use `QA-test.py` to inspect generated test data without invoking an LLM:
+
+```bash
+python QA-test.py
+```
+
+---
+
+## 🔌 Extending the Harness
+
+### ➕ Adding New LLM Providers
+
+1. Subclass `Model` in `knit_space/models.py`
+2. Implement:
+
+   * `_initialize_client()`
+   * `inference(...)`
+3. Update:
+
+   * `PROVIDER_CLASS_MAP`
+   * `_get_api_key_for_provider()` and optionally `_list_api_models()`
+
+### 🧪 Adding New Test Types
+
+1. Create a new file in `knit_space/tests/`
+2. Subclass `AbstractQATest`
+3. Implement `generate()` to yield `QAItem`s
+4. Optionally register using `@register_test()`
+
+---
+
+## 📦 Install as a Package
+
+You can also install this project as a pip package (once published):
+
+```bash
+pip install ks-llm-ranker
+```
