@@ -62,7 +62,7 @@ KnitSpace is an automated testing harness designed to evaluate and compare the c
 ### 2. Installation
 
 ```bash
-git clone <repository_url>
+git clone [<repository_url>](https://github.com/C-you-know/Action-Based-LLM-Testing-Harness)
 cd KnitSpace-LLM-Ranker
 
 python -m venv venv
