@@ -1,14 +1,4 @@
-You've got a **README.md with a merge conflict** between two branches: one uses `KnitSpace`, the other `Knit_Space_LLM_Ranker`. Since your final PyPI package is called `ks-llm-ranker`, and the actual import is still `knit_space`, it's best to use:
 
-* **Project name**: `KnitSpace LLM Ranker`
-* **Import name**: `knit_space`
-* **Install name**: `ks-llm-ranker`
-
-I'll now **resolve the merge conflict** and write a clean, final README that integrates the best of both sides:
-
----
-
-````markdown
 # KnitSpace LLM Ranker: Automated LLM Testing Harness
 
 KnitSpace is an automated testing harness designed to evaluate and compare the capabilities of various Large Language Models (LLMs) across a diverse set of tasks. It provides a comprehensive framework for researchers and developers to assess LLM performance in areas such as problem-solving, knowledge retrieval, coding proficiency, and safety.
@@ -122,9 +112,6 @@ Use `QA-test.py` to inspect generated test data without invoking an LLM:
 ```bash
 python QA-test.py
 ```
-
----
-
 ## 🔌 Extending the Harness
 
 ### ➕ Adding New LLM Providers
