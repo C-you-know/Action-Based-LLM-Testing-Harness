@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ks-llm-ranker"
+version = "0.1.0"
+description = "A Python library for knit_space operations."
+readme = "README.md"  # Assuming a README.md might exist or be added later
+requires-python = ">=3.8"
+license = {file = "LICENSE"}  # Assuming MIT based on common practice, adjust if different
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/example/knit-space" # Placeholder URL
+
+# Add dependencies here if any are discovered later, e.g.:
+# dependencies = [
+#     "requests>=2.20.0",
+# ]
+
+[tool.setuptools.packages.find]
+where = ["."]  # look for packages in the current directory
+include = ["knit_space*"]  # include all packages starting with knit_space
+exclude = ["knit_space.tests*"] # exclude tests from the package
