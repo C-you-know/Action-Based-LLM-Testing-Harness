@@ -1,6 +1,6 @@
-# KnitSpace: Automated LLM Testing Harness
+# Knit_Space_LLM_Ranker: Automated LLM Testing Harness
 
-KnitSpace is an automated testing harness designed to evaluate and compare the capabilities of various Large Language Models (LLMs) across a diverse set of tasks. It provides a comprehensive framework for researchers and developers to assess LLM performance in areas such as problem-solving, knowledge retrieval, coding proficiency, and safety.
+Knit_Space_LLM_Ranker is an automated testing harness designed to evaluate and compare the capabilities of various Large Language Models (LLMs) across a diverse set of tasks. It provides a comprehensive framework for researchers and developers to assess LLM performance in areas such as problem-solving, knowledge retrieval, coding proficiency, and safety.
 
 ## Key Features
 
@@ -21,7 +21,7 @@ KnitSpace is an automated testing harness designed to evaluate and compare the c
 
 ## Core Components
 
-KnitSpace is organized into several core components that work together to provide a flexible and comprehensive LLM testing environment:
+Knit_Space_LLM_Ranker is organized into several core components that work together to provide a flexible and comprehensive LLM testing environment:
 
 *   **`knit_space/models.py`**: This module is the heart of LLM interaction.
     *   It defines an abstract base class `Model` ensuring a consistent interface for all LLM providers.
@@ -56,7 +56,7 @@ KnitSpace is organized into several core components that work together to provid
 
 ## Setup
 
-Follow these steps to set up the KnitSpace environment:
+Follow these steps to set up the Knit_Space_LLM_Ranker environment:
 
 ### 1. Prerequisites
 
@@ -69,7 +69,7 @@ Follow these steps to set up the KnitSpace environment:
 1.  **Clone the repository**:
     ```bash
     git clone <repository_url> # Replace <repository_url> with the actual URL
-    cd knitspace # Or your repository's directory name
+    cd Knit_Space_LLM_Ranker # Or your repository's directory name
     ```
 
 2.  **Create a virtual environment** (recommended):
@@ -79,7 +79,7 @@ Follow these steps to set up the KnitSpace environment:
     ```
 
 3.  **Install dependencies**:
-    KnitSpace relies on several external libraries. Install them using pip:
+    Knit_Space_LLM_Ranker relies on several external libraries. Install them using pip:
     ```bash
     pip install requests numpy torch transformers Flask Pillow
     ```
@@ -92,7 +92,7 @@ Follow these steps to set up the KnitSpace environment:
 
 ### 3. Configuration
 
-*   **API Keys**: Most LLM providers require API keys for authentication. KnitSpace expects these keys to be set as environment variables. The specific variable names are typically:
+*   **API Keys**: Most LLM providers require API keys for authentication. Knit_Space_LLM_Ranker expects these keys to be set as environment variables. The specific variable names are typically:
     *   `OPENAI_API_KEY` for OpenAI models
     *   `GEMINI_API_KEY` (or `GOOGLE_API_KEY`) for Gemini/Google models
     *   `MISTRAL_API_KEY` for Mistral models
@@ -115,7 +115,7 @@ Follow these steps to set up the KnitSpace environment:
     export CLOUDFLARE_ACCOUNT_ID="your_cloudflare_account_id"
     ```
 
-*   **Docker (for CodeExecutor)**: Ensure Docker is running. No specific configuration within KnitSpace is usually needed if Docker is installed and accessible from your terminal.
+*   **Docker (for CodeExecutor)**: Ensure Docker is running. No specific configuration within Knit_Space_LLM_Ranker is usually needed if Docker is installed and accessible from your terminal.
 
 ## Running Tests
 
@@ -222,7 +222,7 @@ This detailed breakdown allows for qualitative analysis of an LLM's successes an
 
 ## Extending the Harness
 
-KnitSpace is designed to be extensible. You can add support for new LLM providers or create entirely new types of tests.
+Knit_Space_LLM_Ranker is designed to be extensible. You can add support for new LLM providers or create entirely new types of tests.
 
 ### 1. Adding New LLM Providers
 
@@ -266,4 +266,4 @@ To create new types of evaluation tasks:
 3.  **Use Your Test**:
     *   Import your new test class in `verify-auto.py` (or other execution scripts) and add it to the `test_cases` list.
 
-By following these patterns, you can seamlessly integrate new functionalities and broaden the evaluation scope of the KnitSpace harness.
+By following these patterns, you can seamlessly integrate new functionalities and broaden the evaluation scope of the Knit_Space_LLM_Ranker harness.
