@@ -32,6 +32,3 @@ Requires-Python: >=3.8
 Description-Content-Type: text/markdown
 License-File: LICENSE
 Dynamic: license-file
-
-# knit-space
-A Python library for knit_space operations.
