@@ -4,26 +4,41 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ks-llm-ranker"
-version = "0.1.1"
+version = "0.1.4"
 description = "A Python library for knit_space operations."
-readme = "README.md"  # Assuming a README.md might exist or be added later
+readme = "README.md"
 requires-python = ">=3.8"
-license = {file = "LICENSE"}  # Assuming MIT based on common practice, adjust if different
+license = {file = "LICENSE"}
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
 
-[project.urls]
-"Homepage" = "https://github.com/example/knit-space" # Placeholder URL
+dependencies = [
+    "beautifulsoup4==4.13.3",        
+    "cerebras-cloud-sdk==1.35.0",     
+    "chess==1.11.2",
+    "cohere==5.14.0",
+    "datasets==3.6.0",
+    "Flask==3.1.1",
+    "google-generativeai==0.8.5",
+    "groq==0.25.0",
+    "mistralai==1.7.1",
+    "mpmath==1.3.0",
+    "numpy==1.26.4",
+    "openai==1.69.0",
+    "Pillow==11.1.0",
+    "requests==2.32.3",
+    "together==1.4.6",
+    "torch==2.7.0",
+    "transformers==4.51.3",
+    "yfinance==0.2.61"
+]
 
-# Add dependencies here if any are discovered later, e.g.:
-# dependencies = [
-#     "requests>=2.20.0",
-# ]
+[project.urls]
+Homepage = "https://github.com/C-you-know/Action-Based-LLM-Testing-Harness"
 
 [tool.setuptools.packages.find]
-where = ["."]  # look for packages in the current directory
-include = ["knit_space*"]  # include all packages starting with knit_space
-exclude = ["knit_space.tests*"] # exclude tests from the package
+where = ["."]
+include = ["knit_space*"]

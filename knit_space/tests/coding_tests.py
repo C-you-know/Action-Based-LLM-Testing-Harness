@@ -1,7 +1,7 @@
 # knit_space/tests/coding_tests.py
 from .base import AbstractQATest, QAItem, register_test
 from .coding_problem_defs import ALL_CODING_PROBLEMS, CodingProblem
-from knit_space.utils.code_executor import CodeExecutor, CodeExecutionResult # Adjusted import
+from ..utils.code_executor import CodeExecutor, CodeExecutionResult # Adjusted import
 import uuid
 import re
 from typing import Any, Dict, Iterator, List, Optional

@@ -235,7 +235,7 @@ if __name__ == '__main__':
             def decorator(cls): return cls
             return decorator
         try:
-            from knit_space.obscurers.char_obfuscator import CharObfuscator
+            from ..obscurers.char_obfuscator import CharObfuscator
             globals()['CharObfuscator'] = CharObfuscator
             print("CharObfuscator loaded successfully for MedMCQA standalone __main__.")
         except ImportError as e:

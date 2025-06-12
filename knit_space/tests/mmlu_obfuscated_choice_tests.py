@@ -252,7 +252,7 @@ if __name__ == '__main__':
         # Explicitly import CharObfuscator for standalone __main__
         # This assumes char_obfuscator.py is in knit_space/obscurers/
         try:
-            from knit_space.obscurers.char_obfuscator import CharObfuscator
+            from ..obscurers.char_obfuscator import CharObfuscator
             # Make it globally available in this __main__ scope for the test class __init__
             globals()['CharObfuscator'] = CharObfuscator
             print("CharObfuscator loaded successfully for standalone __main__.")
