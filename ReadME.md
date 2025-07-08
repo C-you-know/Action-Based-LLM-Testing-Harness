@@ -1,3 +1,5 @@
+[![PyPI version](https://badge.fury.io/py/ks-llm-ranker.svg)](https://pypi.org/project/ks-llm-ranker/)
+[![Python Versions](https://img.shields.io/pypi/pyversions/ks-llm-ranker.svg)](https://pypi.org/project/ks-llm-ranker/)
 
 # KnitSpace LLM Ranker: Automated LLM Testing Harness
 
