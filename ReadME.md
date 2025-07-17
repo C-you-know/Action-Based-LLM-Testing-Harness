@@ -17,42 +17,6 @@ KnitSpace is an automated testing harness designed to evaluate and compare the c
 
 ---
 
-## 🧱 Core Components
-
-### 📁 `knit_space/models.py`
-- Unified interface for all LLM providers.
-- Abstract `Model` class + subclasses like `OpenAIModel`, `GeminiModel`, etc.
-- Manages API initialization, inference calls, and model metadata.
-
-### 📁 `knit_space/tests/`
-- Contains all test definitions.
-- `base.py` defines:
-  - `QAItem`: A test prompt, answer, and scoring logic.
-  - `AbstractQATest`: Base class for all test sets.
-  - `TestRegistry`: Auto-discovers test modules.
-- Includes test types: math, coding, chess, long-context, MMLU, etc.
-
-### 📁 `knit_space/marker.py`
-- Evaluates model responses.
-- Uses `QAItem` scoring logic and tracks correctness.
-- Implements Elo scoring using both test difficulty and S-value.
-- Launches `Flask` server to review test results interactively.
-
-### 📁 `knit_space/utils/code_executor.py`
-- Runs Python and JS code from models inside Docker safely.
-- Accepts test cases (input/output pairs) for correctness validation.
-
-### 📁 `knit_space/obscurers/`
-- Tools for generating challenging input variants.
-- `CharObfuscator`: Replaces characters using a bijective map to test reasoning under noise.
-
-### 🐍 `verify-auto.py`
-- Main script to run tests.
-- Configures model, loads test classes, and executes tests.
-- Starts web server for results review.
-
----
-
 ## ⚙️ Setup
 
 ### 1. Prerequisites
