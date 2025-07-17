@@ -16,6 +16,21 @@ KnitSpace is an automated testing harness designed to evaluate and compare the c
 - **Extensible**: Easily add new LLM providers and new types of tests.
 
 ---
+## ⚙️ Total Action-Based Evaluation
+
+We model text generation as a physical system traversing high-dimensional semantic space. Each step contributes kinetic and potential energy, and the **Total Action** quantifies overall generation effort:
+
+$$
+L_t = \frac{1}{2} m_t \| \vec{v}_t \|^2 + \alpha(-\log P_{t+1})
+$$
+
+$$
+S = \sum_{t=1}^{T-1} L_t \quad ; \quad \text{ELO Efficiency Score} = \frac{1}{S}
+$$
+
+📄 [Read the full design doc here (PDF)](./Chinmay_LLMHarnes.pdf)
+
+---
 
 ## ⚙️ Setup
 
