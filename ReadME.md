@@ -20,9 +20,10 @@ KnitSpace is an automated testing harness designed to evaluate and compare the c
 
 We model text generation as a physical system traversing high-dimensional semantic space. Each step contributes kinetic and potential energy, and the **Total Action** quantifies overall generation effort:
 
-![LLM Physics Equations](https://latex.codecogs.com/svg.image?\dpi{150}&space;\begin{align*}\vec{v}_t&=H_{t+1}-H_t\\m_t&=\text{base\_FLOPs}+t\cdot\text{growth}\\L_t&=\frac{1}{2}m_t\|\vec{v}_t\|^2+\alpha(-\log%20P_{t+1})\\S&=\sum_{t=1}^{T-1}L_t\\\text{ELO}&=\frac{1}{\log_{10}(S)}\end{align*})
+![LLM Physics Equations](./Equations.png)
+📄 [Read the full design doc here (PDF)](./ks_llm_ranker.pdf)
 
-📄 [Read the full design doc here (PDF)](./Chinmay_LLMHarnes.pdf)
+
 
 ---
 
